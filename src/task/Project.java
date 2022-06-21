@@ -14,4 +14,12 @@ public class Project {
         tasklist = new ArrayList<Task>();
     }
 
+    public void addTask(String taskName, String deadline) {
+        tasklist.add(new Task(taskName, deadline));
+    }
+
+    public ArrayList<Task> getTasklist() {
+        return this.tasklist;
+    }
+
 }
