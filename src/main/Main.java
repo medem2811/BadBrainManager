@@ -25,17 +25,19 @@ public class Main {
 
             project.addTask(taskName, deadline);
 
-            for (Task task : project.getTasklist()) {
-                System.out.println(task.getTaskName() + ": " + task.getStartDate() + " - " + task.getDeadline());
-            }
+            printTaksList(project);
+
             System.out.println("\nDo you want to add another task? (y/n)");
             String answer = scanner.nextLine();
             moreTasksToAdd = answer.equals("y");
 
         } while (moreTasksToAdd);
 
+    }
 
-
-
+    public static void printTaksList(Project project) {
+        for (Task task : project.getTasklist()) {
+            System.out.println(task.getTaskName() + ": " + task.getStartDate() + " - " + task.getDeadline());
+        }
     }
 }
