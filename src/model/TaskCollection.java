@@ -1,17 +1,14 @@
-package task;
+package model;
 
 import java.util.ArrayList;
 
-public class Project {
+public class TaskCollection {
 
-    private String name;
-
-    private ArrayList<Task> tasklist;
+    private final ArrayList<Task> tasklist;
 
 
-    public Project (String name) {
-        this.name = name;
-        tasklist = new ArrayList<Task>();
+    public TaskCollection () {
+        tasklist = new ArrayList<>();
     }
 
     public void addTask(String taskName, String deadline) {
