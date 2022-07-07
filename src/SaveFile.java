@@ -9,12 +9,29 @@ public class SaveFile {
 
     private FileWriter file;
 
+    private File saveFile;
+
     public SaveFile() {
         filename = "testfile.txt";
         try {
             file = new FileWriter(filename);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public SaveFile(File file) {
+        this.saveFile = file;
+        filename = file.getName();
+    }
+
+    public static SaveFile loadFile(String filename) {
+        try {
+            FileReader reader = new FileReader(filename);
+            return new SaveFile(new File(filename));
+        } catch (FileNotFoundException e) {
+            System.out.println(String.format("File with name %s could not be found", filename));
+            return null;
         }
     }
 
@@ -37,5 +54,13 @@ public class SaveFile {
             e.printStackTrace();
         }
         return output;
+    }
+
+    public void deleteFile() {
+        try {
+            Files.deleteIfExists(saveFile.toPath());
+        } catch (IOException e) {
+            System.out.println(String.format("Could not delete file %s", saveFile.getName()));
+        }
     }
 }
