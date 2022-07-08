@@ -1,5 +1,7 @@
 package model;
 
+import exception.TaskNotCreatedException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -16,6 +18,16 @@ public class Task {
 
     public Task () {
         this.taskName = "";
+        this.startDate = LocalDate.now();
+
+        this.deadline = "today";
+    }
+
+    public Task(String taskName) throws TaskNotCreatedException {
+        if (taskName.equals("")) {
+            throw new TaskNotCreatedException("Task name cannot be empty String");
+        }
+        this.taskName = taskName;
         this.startDate = LocalDate.now();
 
         this.deadline = "today";
